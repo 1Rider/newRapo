@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@mui/material'
 import Achive from './achive'
-import Month from './month'
+import Month from './Month'
 
 const AdminDashboard = () => {
 	return (
