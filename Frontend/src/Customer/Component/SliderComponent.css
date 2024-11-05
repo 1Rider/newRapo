@@ -1,0 +1,187 @@
+/* SliderComponent.css */
+.slider-container {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 90px;
+}
+
+.slick-track {
+	display: flex !important;
+	/* Make sure the slider track uses flex layout */
+	gap: 10px;
+	/* Set the gap between items */
+}
+
+.slide-item {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	background-color: #fff;
+	transition: transform 0.3s ease-in-out;
+}
+
+.slide-item:hover {
+	transform: scale(1.0);
+}
+
+.product-image {
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+h3 {
+	margin-top: 10px;
+	font-size: 1.2em;
+}
+
+/* Updated styles for larger arrow buttons */
+.slick-prev,
+.slick-next {
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	cursor: pointer;
+	color: black;
+	border: none;
+	background: none;
+	outline: none;
+	z-index: 2;
+	width: 50px;
+	/* Increase width */
+	height: 50px;
+	/* Increase height */
+}
+
+.slick-prev {
+	left: 10px;
+}
+
+.slick-next {
+	right: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+	font-size: 40px;
+	/* Increase font size */
+	color: #ffffff;
+}
+
+.button {
+	padding: 3px 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: inline-block;
+	margin: 10px;
+}
+
+.buy-now {
+	background: linear-gradient(45deg, #FFA726, #FF7043);
+}
+
+.buy-now:hover {
+	background: linear-gradient(45deg, #FF7043, #FFA726);
+	box-shadow: 0 6px 15px rgba(255, 112, 67, 0.5);
+	transform: translateY(-3px);
+}
+
+.add-to-cart {
+	background: linear-gradient(45deg, #deebf6, #7dc4ff);
+}
+
+.add-to-cart:hover {
+	background: linear-gradient(45deg, #cbe5ff, #76c1ff);
+	box-shadow: 0 6px 15px rgba(30, 136, 229, 0.5);
+	transform: translateY(-3px);
+}
+
+.buttons {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+}
+
+/* Media Queries */
+
+/* Tablet styles (screen width 768px and below) */
+@media (max-width: 768px) {
+	.slider-container {
+		width: 95%;
+		margin-top: 60px;
+	}
+
+	.slick-track {
+		gap: 8px;
+	}
+
+	.slide-item {
+		padding: 5px;
+	}
+
+	.slick-prev,
+	.slick-next {
+		width: 40px;
+		height: 40px;
+	}
+
+	.slick-prev:before,
+	.slick-next:before {
+		font-size: 30px;
+	}
+
+	.button {
+		padding: 1px 8px;
+		font-size: 12px;
+	}
+
+	h3 {
+		font-size: 1.1em;
+	}
+}
+
+/* Mobile styles (screen width 480px and below) */
+@media (max-width: 480px) {
+	.slider-container {
+		width: 100%;
+		margin-top: 40px;
+	}
+
+	.slick-track {
+		gap: 5px;
+	}
+
+	.slide-item {
+		padding: 3px;
+	}
+
+	.slick-prev,
+	.slick-next {
+		width: 30px;
+		height: 30px;
+	}
+
+	.slick-prev:before,
+	.slick-next:before {
+		font-size: 25px;
+	}
+
+	.button {
+		padding: 0px 2px;
+		font-size: 10px;
+	}
+
+	h3 {
+		font-size: 1em;
+	}
+}

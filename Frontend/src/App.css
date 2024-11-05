@@ -1,0 +1,77 @@
+.native-carosul-button-right {
+	position: absolute;
+	top: 8rem;
+	right: 0rem;
+	transform: translate(50%);
+	width: 2rem;
+	height: 3rem;
+
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+.native-carosul-button-left {
+
+	position: absolute;
+	top: 8rem;
+	left: 0rem;
+	transform: translate(-50%);
+	width: 2rem;
+	height: 3rem;
+
+	border: 2px solid black;
+	border-radius: 10px;
+
+}
+
+.primary-button {
+	width: 4rem;
+	height: 30px;
+	border: 0.1px solid rgb(253, 253, 253);
+	background-color: rgb(12, 255, 255);
+	border-radius: 30%;
+	margin-right: 20px;
+
+}
+
+.Footer {
+	background-color: rgb(0, 0, 0);
+	width: 100%;
+	color: aliceblue;
+	padding-bottom: 30px;
+	margin-top: 50px;
+
+}
+
+.heading {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.sub-heading {
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.box-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	margin-bottom: 5%;
+}
+
+.box {
+	margin-left: 5%;
+	width: 12rem;
+
+}
+
+.homeSection {
+	padding-top: 65px;
+}
+
+.sub-heading {
+	font-size: 1.3rem;
+	font-weight: 620;
+}

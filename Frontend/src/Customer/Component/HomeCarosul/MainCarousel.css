@@ -1,0 +1,61 @@
+/* SliderComponent.css */
+
+
+.slick-track {
+	display: flex !important;
+	/* Make sure the slider track uses flex layout */
+	gap: 10px;
+	/* Set the gap between items */
+}
+
+.slide-item {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	background-color: #fff;
+	transition: transform 0.3s ease-in-out;
+}
+
+.slide-item:hover {
+	transform: scale(1.0);
+}
+
+.product-image {
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.slick-prev,
+.slick-next {
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	cursor: pointer;
+	color: black;
+	border: none;
+	background: none;
+	outline: none;
+	z-index: 2;
+	width: 50px;
+	/* Increase width */
+	height: 50px;
+	/* Increase height */
+}
+
+.slick-prev {
+	left: 10px;
+}
+
+.slick-next {
+	right: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+	font-size: 40px;
+	/* Increase font size */
+	color: #ffffff;
+}
