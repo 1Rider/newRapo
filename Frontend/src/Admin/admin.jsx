@@ -12,8 +12,8 @@ import AddIcon from '@mui/icons-material/Add';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CreProFrom from './component/CreProFrom';
 import CustomerTable from './component/customerTable';
-import ProductTable from './component/productTable';
-import OrderTable from './component/orderTable';
+import ProductTable from './component/ProductTable';
+import OrderTable from './component/OrderTable';
 import AdminDashboard from './component/Dashboard';
 
 
