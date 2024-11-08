@@ -1,12 +1,13 @@
 
-import React, { act, useState } from 'react';
+import React from 'react';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import Slider from 'react-slick';
 import './HomeSectionCarosul.css';
 import { useNavigate } from 'react-router-dom';
 import { addItemToCart } from '../../../State/Cart/Action';
+import { useDispatch } from 'react-redux';
 
-// Custom Arrow components
+
 const NextArrow = (props) => {
 	const { className, style, onClick } = props;
 	return (
@@ -31,6 +32,7 @@ const PrevArrow = (props) => {
 
 const HomeSectionCarosul = ({ item }) => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const settings = {
 		dots: false,
@@ -67,8 +69,6 @@ const HomeSectionCarosul = ({ item }) => {
 		]
 	};
 
-
-
 	const handleAddToCart = (id) => {
 		const data = { productId: id, size: "xl" }
 		dispatch(addItemToCart(data))
@@ -76,35 +76,33 @@ const HomeSectionCarosul = ({ item }) => {
 	}
 
 	return (
-		<div className="slider-container">
-			<h2 className='text-2xl font-bold m-3 mt-[-60px]'>Product Category</h2>
+		<div className="slider-container w-full mt-[40px] px-4" >
+			<h2 className='text-xl font-bold m-3 mt-[-30px]'>Product Category</h2>
 			<Slider {...settings}>
 				{item?.map(product => (
-					<div key={product._id} className="slide-item" onClick={() => navigate(`/product/${product?._id}`)}>
-						<img src="https://img.freepik.com/premium-photo/colorful-image-rainbow-colored-peacock_1282123-404.jpg" alt={product.model} className="product-image" />
-						<span className='flex flex-warp' >
-							<h6 className='text-sm mr-6 mx-2'>{product.brand}</h6>
+					<div
+						key={product._id}
+						className="slide-item"
 
-							<p className='text-md text-lime-400 font-bold mx-2' >{product.discountedPrice} </p>
-							<del className='text-md mx-2'>{product.price}</del>
+					>
+						<img src="https://img.freepik.com/premium-photo/colorful-image-rainbow-colored-peacock_1282123-404.jpg" alt={product.model} className="product-image"
+							onClick={() => navigate(`/product/${product?._id}`)}
+						/>
+						<span className='flex flex-warp justify-between  mt-2.5 sm:mx-1 md:mx-2 lg:mx-3 xl:mx-3 2xl:mx-4' >
+							<p className=' text-sm p-0 flex '>{product.brand} </p>
+							<span className='md:pl-8 text-xl sm:text-base text-lime-500 font-bold ' >₹{product.discountedPrice}
+								{/*<span className='text-md mx-2 line-through opacity-80 '>₹{product.price}</span>*/}
+							</span>
 						</span>
-						<div className='buttons flex flex-col sm:flex-row justify-between'>
+
+						<div className="buttons flex justify-center p-2 ">
 							<button
 								onClick={() => handleAddToCart(product._id)}
-								className="bg-blue-400 mx-2 m-2 text-white font-semibold py-1 px-2 rounded-lg shadow-md transition-transform transform duration-300 ease-in-out 
-                 hover:bg-blue-600 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+								className="w-full bg-blue-500 text-white font-semibold py-0.5 md:py-1 lg:py-2 rounded-lg shadow-md transition-all duration-300 ease-in-out
+    hover:bg-blue-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-center"
 							>
-								BuyNow
+								Buy
 							</button>
-
-							{/*<button
-
-								className="bg-blue-400 mx-2 m-2 text-white font-semibold py-1 px-2 rounded-lg shadow-md transition-transform transform duration-300 ease-in-out 
-                 hover:bg-blue-600 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-							>
-								+ Add
-							</button>*/}
-
 						</div>
 					</div>
 
@@ -115,3 +113,16 @@ const HomeSectionCarosul = ({ item }) => {
 };
 
 export default HomeSectionCarosul;
+
+
+
+
+
+
+{/*<button
+
+								className="bg-blue-400 mx-0.5 m-2 text-white font-semibold py-0.5 px-0.5 rounded-lg shadow-md transition-transform transform duration-300 ease-in-out 
+                 hover:bg-blue-600 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+							>
+								+ Add
+							</button>*/}

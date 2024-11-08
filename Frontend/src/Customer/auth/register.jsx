@@ -39,34 +39,93 @@ const RegisterForm = () => {
 
 
 	return (
-		<div>
-			<div className='m-14'>
-				<center>
-					<div className='border  m-28 px-20'>
-						<p className='text-lg m-8 font-bold'><a className='w-full bg-sky-300 hover:bg-sky-500 p-2 m-2 border-2  border-black rounded-lg ' onClick={() => { navigate("/register") }}>Registration Form </a><a className=' border-2  border-black rounded-lg px-2 w-full bg-white-300 hover:bg-gray-300' onClick={() => { navigate("/login") }}>Login Form </a> </p>
+		<div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 mt-8">
+			<div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
+				<div className="text-center mb-6">
+					<p className="text-2xl font-semibold text-gray-700">Welcome</p>
+					<p className="text-sm text-gray-500">Please register or log in below</p>
+				</div>
 
-						<form onSubmit={handleSubmit}>
+				<div className="flex justify-center space-x-4 mb-6">
+					<button
+						onClick={() => navigate('/register')}
+						className="px-4 py-2 text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
+					>
+						Register
+					</button>
+					<button
+						onClick={() => navigate('/login')}
+						className="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+					>
+						Login
+					</button>
+				</div>
 
-							<TextField required className='w-full' name="name" label="Full Name" variant="outlined" /><br></br><br></br>
+				<form onSubmit={handleSubmit} className="space-y-4">
+					<TextField
+						required
+						fullWidth
+						name="name"
+						label="Full Name"
+						variant="outlined"
+						className="bg-gray-50"
+					/>
 
-							<TextField required className='w-full' name='shopName' label="Shop Name" variant="outlined" /><br></br><br></br>
+					<TextField
+						required
+						fullWidth
+						name="shopName"
+						label="Shop Name"
+						variant="outlined"
+						className="bg-gray-50"
+					/>
 
-							<TextField required className='w-full' name='wardNumber' label="Ward Number" variant="outlined" /><br></br><br></br>
+					<TextField
+						required
+						fullWidth
+						name="wardNumber"
+						label="Ward Number"
+						variant="outlined"
+						className="bg-gray-50"
+					/>
 
-							<TextField required multiline name="address" fullWidth label="Full Address + Street Name" /><br></br><br></br>
+					<TextField
+						required
+						multiline
+						fullWidth
+						name="address"
+						label="Full Address + Street Name"
+						variant="outlined"
+						className="bg-gray-50"
+					/>
 
-							<TextField required className='w-full' name='mobileNumber' label="Mobile Number" variant="outlined" /><br></br><br></br>
+					<TextField
+						required
+						fullWidth
+						name="mobileNumber"
+						label="Mobile Number"
+						variant="outlined"
+						className="bg-gray-50"
+					/>
 
-							<TextField required className='w-full' name='password' label="Create Password" variant="outlined" /> <br></br><br></br>
+					<TextField
+						required
+						fullWidth
+						name="password"
+						label="Create Password"
+						type="password"
+						variant="outlined"
+						className="bg-gray-50"
+					/>
 
-							<button className=' m-4 w-24 h-8 border-none rounded-lg bg-sky-300 hover:bg-sky-500'>Register</button>
-
-
-						</form>
-					</div>
-				</center>
+					<button
+						type="submit"
+						className="w-full py-3 mt-4 text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 transition duration-200"
+					>
+						Register
+					</button>
+				</form>
 			</div>
-
 		</div>
 	)
 }

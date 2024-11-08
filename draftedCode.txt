@@ -1,1 +1,48 @@
  "dev": "nodemon server.js",
+
+ 				<Box sx={{ display: "flex", alignItems: "center" }}>
+					<Avatar variant='rounded' sx={{ mr: 3, width: 44, height: 44, boxShadow: 3, color: 'white', background: `${item.color} ` }}></Avatar>
+					<Box sx={{ display: "flex", flexDirection: "column" }}>
+						<Typography variant='caption'>{item.title}</Typography>
+						<Typography variant='h6'>{item.stats}</Typography>
+					</Box>
+					<Box className="flex items-center">
+						<p className='xl'>
+							{item.stats}
+						</p>
+						<p className='lg' >{item.title}</p>
+					</Box>	</Box>
+
+
+					<Card sx={{ bgcolor: "#24282E", color: "white" }}>
+			<CardHeader
+				title="Monthly Overview"
+				action={
+					<IconButton size='small'>
+						<MoreVertIcon />
+					</IconButton>
+				}
+				subheader={
+					<Typography variant='body2'>
+						<Box component='span' sx={{ fontWeight: 600 }}>
+							Total 48%
+						</Box>
+						This month
+					</Typography>
+				}
+				titleTypographyProps={{
+					sx: {
+						mb: 2.5,
+						lineHeight: '2rem !important',
+						letterSpacing: '.15px !important'
+					}
+				}}
+			/>
+			<CardContent sx={{ pt: theme => `${theme.spacing(3)} !important` }}>
+				<div>
+
+					sd	{renderStats()}sd
+				</div>
+			</CardContent>
+
+		</Card>

@@ -17,7 +17,7 @@ const Cart = () => {
 
 			<div className='flex flex-wrap justify-center col-span-2'>
 
-				{cart.cart?.cartItems.map((item) => <CartItem item={item}></CartItem>)}
+				{cart.cart?.cartItems.map((item) => <CartItem key={item._id} item={item}></CartItem>)}
 
 			</div>
 			<div className='m-5 mt-1 border shadow pt-10 p-10 bg-white'>

@@ -74,7 +74,7 @@ const Admin = () => {
 			</div>
 
 
-			<Box>
+			<Box className="w-full m-10">
 				<Routes>
 					<Route path="/" element={<AdminDashboard />}></Route>
 					<Route path="/product/create" element={<CreProFrom />}></Route>

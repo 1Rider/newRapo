@@ -28,10 +28,13 @@ async function updateCartItem(userId, cartItemId, cartItemData) {
 	}
 }
 
-
 async function removeCartItem(userId, cartItemId) {
-	const cartItem = await findCartItemById(cartItemId);
 	const user = await userService.findUserById(userId);
+	if (cartItemId === "DELETEALLCARTITEM") {
+		return await CartItem.deleteMany({ userId: user._id });
+	}
+	const cartItem = await findCartItemById(cartItemId);
+
 	console.log(`user id  : ${user._id.toString()} & cartItem userId : ${cartItem.userId.toString()}`)
 	if (user._id.toString() === cartItem.userId.toString()) {
 		return await CartItem.findByIdAndDelete(cartItemId);

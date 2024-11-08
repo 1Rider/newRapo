@@ -46,11 +46,12 @@ const authenticate = async (req, res, next) => {
 		if (!user) {
 			return res.status(404).send({ error: "User not found" });
 		}
-		console.log("user from authentication is : ", user);
+		console.log("user from authenticdfgation dfdfis : ", user);
 
-
+		console.log("the remove function started ******");
 		// Attach user to request object
 		req.user = user;
+		console.log("user assigned successfully**********");
 
 	} catch (error) {
 		return res.status(500).send({ error: error.message });

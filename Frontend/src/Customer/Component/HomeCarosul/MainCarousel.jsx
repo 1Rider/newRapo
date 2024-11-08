@@ -1,27 +1,9 @@
 import React from 'react';
-//import AliceCarousel from 'react-alice-carousel';
-//import 'react-alice-carousel/lib/alice-carousel.css';
 import { Carimage } from './CarosulImage.jsx'
-//
-//function MainCarousel() {
-//
-//    const items = Carimage.map((item) => <center><img src={item.url} alt='car rent' style={{ width: '90rem', height: '550px' }} /></center>)
-//
-//    return <AliceCarousel
-//        items={items}
-//        autoPlay
-//        disableButtonsControls
-//        autoPlayInterval={1700}
-//        infinite
-//    />
-//};
-//
-//export default MainCarousel;
-
 import Slider from 'react-slick';
 import './MainCarousel.css';
 
-// Custom Arrow components
+
 const NextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
@@ -52,7 +34,7 @@ const MainCarousel = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 4690,
+        autoplaySpeed: 5100,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         responsive: [
@@ -84,13 +66,11 @@ const MainCarousel = () => {
         { id: 1, name: 'Product 1', image: 'https://i.ytimg.com/vi/OKZFHo5p4VA/sddefault.jpg' },
         { id: 2, name: 'Product 2', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgPbd2MBbw3o5_yzYC_pPjoVNKUx7WCrMN3g&s' },
         { id: 3, name: 'Product 3', image: 'https://toolset.com/wp-content/uploads/2021/05/toolset-hero-same-buttons-1.png' },
-        { id: 4, name: 'Product 4', image: 'https://via.placeholder.com/300' },
-        { id: 5, name: 'Product 5', image: 'https://via.placeholder.com/300' },
         { id: 6, name: 'Product 6', image: 'https://via.placeholder.com/300' }
     ];
 
     return (
-        <div className=' mt-12 '>
+        <div className=' mt-12 m-2'>
 
             <Slider {...settings}>
                 {Carimage.map(product => (
@@ -102,5 +82,4 @@ const MainCarousel = () => {
         </div>
     );
 };
-
 export default MainCarousel;

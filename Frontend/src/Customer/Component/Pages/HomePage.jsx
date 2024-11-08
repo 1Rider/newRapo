@@ -23,9 +23,6 @@ const HomePage = () => {
 	useEffect(() => {
 		const minPrice = 0;
 		const maxPrice = 0;
-
-
-
 		const data = {
 			Category: "",
 			colors: [],
@@ -44,10 +41,10 @@ const HomePage = () => {
 
 	return (
 		<div>
+
 			<MainCarousel></MainCarousel>
-			<div>
-				<HomeSectionCarosul item={products.products?.content}></HomeSectionCarosul>
-				<HomeSectionCarosul item={products.products?.content}></HomeSectionCarosul>
+			<div className='w-full'>
+				<HomeSectionCarosul className="w-full" item={products.products?.content}></HomeSectionCarosul>
 				<HomeSectionCarosul item={products.products?.content}></HomeSectionCarosul>
 				<HomeSectionCarosul item={products.products?.content}></HomeSectionCarosul>
 

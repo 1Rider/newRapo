@@ -1,44 +1,61 @@
-import { Box, Card, CardContent, CardHeader, IconButton, Typography } from '@mui/material';
+import { Avatar, Box, Card, CardContent, CardHeader, IconButton, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from 'react'
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import { Grid } from '@mui/material'
+import DiamondIcon from '@mui/icons-material/Diamond';
 
-const salseData = [
-	{
-		stats: "24K",
-		title: "salse",
-		color: "primary",
-	},
-	{
-		stats: "214K",
-		title: "Customer",
-		color: "primary",
-	}, {
-		stats: "14K",
-		title: "Products",
-		color: "primary",
-	}, {
-		stats: "21K",
-		title: "Revenue",
-		color: "primary",
-	},
-];
-
-const renderStats = () => {
-	return salseData.map((item, index) => {
-		<Grid item xs={12} sm={3} key={index} >
-			<Box className="flex items-center">
-				<p className='xl'>{item.stats}</p>
-				<p className='lg' >{item.title}</p>
-			</Box>
-		</Grid>
-	})
-}
+import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 
 
 const Month = () => {
+
+
+
+
+	const salseData = [
+		{
+			stats: "24K",
+			title: "salse",
+			color: "primary",
+			icon: EnhancedEncryptionIcon
+		},
+		{
+			stats: "214K",
+			title: "Customer",
+			color: "primary",
+
+		}, {
+			stats: "14K",
+			title: "Products",
+			color: "primary",
+			icon: ProductionQuantityLimitsIcon
+		}, {
+			stats: "21K",
+			title: "Revenue",
+			color: "primary",
+			icon: DiamondIcon
+		},
+	];
+
+	const renderStats = () => {
+		return salseData.map((item, index) => (
+			<Grid item xs={12} sm={3} key={index} >
+				<Box sx={{ display: "flex", alignItems: "center" }}>
+					<Avatar variant='rounded' sx={{ mr: 3, width: 44, height: 44, boxShadow: 3, color: 'white', background: `${item.color} ` }}></Avatar>
+					<Box sx={{ display: "flex", flexDirection: "column" }}>
+						<Typography variant='caption'>{item.title}</Typography>
+						<Typography variant='h6'>{item.stats}</Typography>
+					</Box>
+				</Box>
+			</Grid >
+		))
+	}
+
+
+
 	return (
-		<Card>
+		<Card sx={{ bgcolor: "#24282E", color: "white" }}>
 			<CardHeader
 				title="Monthly Overview"
 				action={
@@ -48,7 +65,7 @@ const Month = () => {
 				}
 				subheader={
 					<Typography variant='body2'>
-						<Box component='span' sx={{ fontWeight: 500, }}>
+						<Box component='span' sx={{ fontWeight: 600 }}>
 							Total 48%
 						</Box>
 						This month
@@ -67,6 +84,7 @@ const Month = () => {
 					{renderStats()}
 				</Grid>
 			</CardContent>
+
 		</Card>
 	)
 }

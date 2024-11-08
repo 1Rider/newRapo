@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from "../../../State/Auth/Action.jsx"
 
 
+
 //const navigation = {
 //	categories: [
 //		{
@@ -133,6 +134,7 @@ import { getUser } from "../../../State/Auth/Action.jsx"
 //}
 
 export default function Navigation() {
+	const { cart } = useSelector(store => store);
 	const [open, setOpen] = useState(false);
 	const navigate = useNavigate();
 
@@ -178,7 +180,7 @@ export default function Navigation() {
 					className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
 				/>
 
-				<div className="fixed inset-0 z-40 flex">
+				<div className="fixed inset-0 z-40 flex w-1/2">
 					<DialogPanel
 						transition
 						className="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:-translate-x-full"
@@ -191,12 +193,12 @@ export default function Navigation() {
 							>
 								<span className="absolute -inset-0.5" />
 								<span className="sr-only">Close menu</span>
-								<XMarkIcon aria-hidden="true" className="h-6 w-6" />
+								<XMarkIcon aria-hidden="true" className="h-8 w-8 bg-red-400 text-white" />
 							</button>
 						</div>
 
 						{/* Links */}
-						<div className="space-y-6 border-t border-gray-200 px-4 py-6">
+						<div className="space-y-6 border-t border-gray-200 px-6 py-6">
 							<h1 className='text-2xl font-bold'>Shortcuts</h1>
 							<div>
 								<button onClick={() => handleClick("FirstCategory")}> FirstCategory</button>
@@ -252,13 +254,13 @@ export default function Navigation() {
 							</PopoverGroup>
 
 							<div className="ml-auto flex items-center">
-								{auth.user?.firstName ? (<p>{auth.user?.firstName}</p>) : (<div className="lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-									<p onClick={() => handleLogin()} className="text-sm mx:2 font-medium text-gray-700 hover:text-gray-800">
+								{auth.user?.firstName ? (<p>{auth.user?.firstName}</p>) : (<div className="flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+									<p onClick={() => handleLogin()} className="text-sm font-medium text-gray-700 hover:text-gray-800 lg:mx-4 mx-1">
 										Login
 									</p>
-									<span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-									<p onClick={() => handleRegister()} className="text-sm mx-2 font-medium text-gray-700 hover:text-gray-800">
-										|	Create account
+									<span>|</span>
+									<p onClick={() => handleRegister()} className="text-sm  lg:mx-4 mx-1 font-medium text-gray-700 hover:text-gray-800">
+										Register
 									</p>
 								</div>)}
 								{/* Search */}
@@ -276,7 +278,7 @@ export default function Navigation() {
 											aria-hidden="true"
 											className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
 										/>
-										<span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+										<span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800"> {cart.cart?.cartItems.length}</span>
 										<span className="sr-only">items in cart, view bag</span>
 									</a>
 								</div>

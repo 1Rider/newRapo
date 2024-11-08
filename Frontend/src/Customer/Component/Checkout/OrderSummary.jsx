@@ -4,7 +4,7 @@ import CartItem from '../Cart/CartItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getOrderById } from '../../../State/Order/Action'
-
+import { removeCartItem } from '../../../State/Cart/Action'
 
 const OrderSummary = () => {
 
@@ -14,6 +14,13 @@ const OrderSummary = () => {
 	const orderId = searchParams.get("order_id");
 	const navigate = useNavigate();
 	const { order } = useSelector(store => store);
+
+	const handleRemoveCartItem = () => {
+		navigate(`/thankyou`);
+		const idid = "DELETEALLCARTITEM";
+		dispatch(removeCartItem(idid));
+
+	}
 
 	useEffect(() => {
 		dispatch(getOrderById(orderId))
@@ -26,75 +33,86 @@ const OrderSummary = () => {
 			{/*<div>
 				<AddressCard></AddressCard>
 			</div>*/}
-			<div className='justify-center m-12 p-6 '>
+			<div className='justify-center w-full p-4 '>
 
 
 				<div className="overflow-x-auto">
-					<table className="min-w-full bg-white border border-gray-300">
+					<h2 className="font-bold text-2xl md:text-3xl lg:text-4xl pb-8 text-center text-gray-800">
+						AUTO GENERATED BILL
+					</h2>
+					<table className="min-w-full divide-y divide-gray-200">
 						<thead>
-							<tr className="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
-								<th className="py-3 px-6 text-left">Product Name</th>
-								<th className="py-3 px-6 text-left">Discounted Price</th>
-								<th className="py-3 px-6 text-left">Total Save</th>
-								<th className="py-3 px-6 text-left">Total Price</th>
-								<th className="py-3 px-6 text-left">You Save</th>
-
+							<tr className="bg-gray-100 text-gray-700 uppercase text-xs md:text-sm">
+								<th className="py-3 px-4 md:px-6 text-left font-medium">Product Name</th>
+								<th className="py-3 px-4 md:px-6 text-left font-medium">Discounted Price</th>
+								<th className="py-3 px-4 md:px-6 text-left font-medium">Total Price</th>
 							</tr>
 						</thead>
-						<tbody className="text-gray-600 text-sm font-light">
+						<tbody className="text-gray-600 text-xs md:text-sm">
 							{order.order?.orderItems?.map((item) => (
-
-								<tr key={item} className="border-b border-gray-200 hover:bg-gray-100">
-									<td className="py-3 px-6 text-left font-bold text-lg ">{item.product.brand}</td>
-									<td className="py-3 px-6 text-left font-bold text-lg ">₹{(item.product.discountedPrice).toFixed(2)} x {item.quantity}</td>
-									<td className="py-3 px-6 text-left font-bold text-lg ">₹{(item.quantity * (item.product.price - item.product.discountedPrice)).toFixed(2)}</td>
-									<td className="py-3 px-6 text-left font-bold text-lg bg-blue-100">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</td>
-									<td className="py-3 px-6 text-left font-bold text-lg  ">₹{(item.product.price - item.product.discountedPrice).toFixed(2)}</td>
-
+								<tr key={item.product.id} className="hover:bg-gray-50 border-b border-gray-200">
+									<td className="py-3 px-4 md:px-6 font-semibold">{item.product.brand}</td>
+									<td className="py-3 px-4 md:px-6">
+										₹{item.product.discountedPrice.toFixed(2)} x {item.quantity}
+									</td>
+									<td className="py-3 px-4 md:px-6 font-semibold bg-blue-50 rounded-lg">
+										₹{(item.product.discountedPrice * item.quantity).toFixed(2)}
+									</td>
 								</tr>
-
-
 							))}
 						</tbody>
 					</table>
 
-					<div className='m-5 border shadow pt-10 p-10 bg-white'>
-						<center><h2 className='font-bold text-[1.5rem] pb-10'>Product Pricing Details</h2></center>
+					<div className="m-5 border shadow-lg rounded-lg pt-8 p-6 md:p-10 bg-white max-w-lg mx-auto">
+						<h2 className="font-bold text-2xl md:text-3xl lg:text-4xl pb-8 text-center text-gray-800">
+							ORDER SUMMARY
+						</h2>
 						<div>
-							<div className='font-semibold text-[1.1rem] flex justify-between pb-5 '>
-								<p>Price</p>
-								<p>{order.order?.totalPrice}		</p>
+							{/* Price */}
+							<div className="text-base sm:text-lg md:text-xl lg:text-2xl flex justify-between pb-4 text-gray-700">
+								<p className="font-medium text-base">Price</p>
+								<p>{order.order?.totalPrice}</p>
 							</div>
 
-							<div className='font-semibold text-[1.1rem] flex justify-between pb-5 '>
-								<p>You Save</p>
-								<p className='text-green-500'> {order.order?.totalPrice - order.order?.totalDiscountedPrice} </p>
+							{/* Savings */}
+							<div className="text-base sm:text-lg md:text-xl lg:text-2xl flex justify-between pb-4 text-gray-700">
+								<p className="font-medium text-base">You Save</p>
+								<p>
+									₹{(order.order?.totalPrice - order.order?.totalDiscountedPrice).toFixed(2)}
+								</p>
 							</div>
 
-
-							<div className='font-semibold text-[1.1rem] flex justify-between pb-5 '>
-								<p>Dilevery Charges</p>
+							{/* Delivery Charges */}
+							<div className="text-base sm:text-lg md:text-xl lg:text-2xl flex justify-between pb-4 text-gray-700">
+								<p className="font-medium text-base">Delivery Charges</p>
 								<p>Free</p>
 							</div>
 
-							<div className='font-semibold text-[1.2rem] flex justify-between pb-5 '>
-								<p>Total Payable Ammount</p>
-								<p>{order.order?.totalDiscountedPrice}</p>
+							{/* Total Payable Amount */}
+							<div className="text-base sm:text-lg md:text-xl lg:text-2xl flex justify-between pb-4 text-gray-700">
+								<p className="font-bold text-lg">Total Amount</p>
+								<p className="text-green-600 font-bold" >₹{order.order?.totalDiscountedPrice}</p>
 							</div>
 
-
-							<div className='font-semibold text-[1.2rem] flex justify-between pb-5 '>
-								<p>Payment Option</p>
+							{/* Payment Option */}
+							<div className="text-base sm:text-lg md:text-xl lg:text-2xl flex justify-between pb-4 text-gray-700">
+								<p className=" text-base">Payment Option</p>
 								<p>Cash On Delivery</p>
 							</div>
 
-
+							{/* Order Button */}
 							<button
-								onClick={() => navigate(`/thankyou`)}
-								className="mt-10 flex w-full items-center justify-center rounded-md bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-indigo-500 ">
-								ORDER
+								onClick={() => handleRemoveCartItem()}
+								className="mt-8 w-full rounded-md bg-indigo-600 px-4 py-3 text-sm md:text-base lg:text-lg text-white hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-500 focus:outline-none transition-all duration-200"
+							>
+								CONFIRM ORDER ₹{order.order?.totalDiscountedPrice}
 							</button>
-							<p className='text-sm'>Remember by clicking this order button means you will agree with our terms and conditions If you don't want then don't proceed</p>
+
+							{/* Disclaimer Text */}
+							<p className="text-xs sm:text-sm md:text-base text-gray-500 mt-4 text-center">
+								By clicking this order button, you agree to our terms and conditions.
+								Please do not proceed if you do not agree.
+							</p>
 						</div>
 					</div>
 				</div>
